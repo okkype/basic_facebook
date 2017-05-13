@@ -1,2 +1,2 @@
-URL git : https://github.com/okkype/tugas5/
+URL git : https://github.com/okkype/tugas5.git
 URL Test : https://rawgit.com/okkype/tugas5/master/index.html
