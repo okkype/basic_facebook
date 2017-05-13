@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>FB Comment</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </head>
+
+    <body>
+        <script>
+            window.fbAsyncInit = function () {
+                FB.init({
+                    appId: '278816115922055',
+                    xfbml: true,
+                    version: 'v2.9'
+                });
+                FB.AppEvents.logPageView();
+            };
+
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {
+                    return;
+                }
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "http://connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+
+            $(function () {
+                $('#share').click(function () {
+                    FB.login(function () {
+                        // Note: The call will only work if you accept the permission request
+                        FB.api('/me/feed', 'post', {message: $('#isi').html()});
+                    }, {scope: 'publish_actions'});
+                });
+            });
+        </script>
+        <h1>Programmer Surabaya</h1>
+        <p id="isi">Programmer Surabaya dot Com adalah salah satu anak usaha dari Prosatya Bhakti Yasa untuk bidang pembuatan aplikasi komputer atau software untuk wilayah Surabaya, Sidoarjo, Mojokerto, Madura dan sekitarnya.</p>
+        <button id="share">Bagikan di Facebook</button>
+    </body>
+</html>
